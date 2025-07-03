@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   api:
     # Define um nome específico para o contêiner para facilitar a identificação.
