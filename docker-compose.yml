@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  api:
+    # Define um nome específico para o contêiner para facilitar a identificação.
+    container_name: api
+
+    # Constrói a imagem a partir do Dockerfile no diretório atual.
+    # O código da aplicação é copiado para dentro da imagem durante o build.
+    build: .
+
+    # Mapeia a porta 8000 do seu computador para a porta 8000 do contêiner.
+    ports:
+      - "8000:8000"
+
+    # Monta o diretório atual no diretório /app do contêiner.
+    # Isso permite que as alterações no código local sejam refletidas
+    # instantaneamente no contêiner, ideal para desenvolvimento.
+    volumes:
+      - .:/app
+
+    # Comando para iniciar a aplicação com hot-reload ativado.
+    command: uvicorn app:app --host 0.0.0.0 --port 8000 --reload
